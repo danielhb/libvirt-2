@@ -10,7 +10,10 @@ GIT_COMMIT=$(git describe --always)
 TAG="${GIT_TIMESTAMP}-${GIT_COMMIT}"
 DOCKER_PLATFORM="linux/$(echo "${TARGET_ARCHITECTURES}" | sed "s: :,linux/:g")"
 
-docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}"
+# add DOCKER_USER and use --password-stdin
+DOCKER_USER="danielhb"
+# docker login -u="${DOCKER_USER}" -p="${DOCKER_PASS}"
+docker login -u="${DOCKER_USER}"
 
 # This builds a multi-architecture image and uploads it, all in a
 # single step. The cached layers from the build step will be reused,

@@ -20,6 +20,7 @@ for ARCH in ${TARGET_ARCHITECTURES}; do
         --load \
         --platform="${DOCKER_PLATFORM}" \
         --tag "${IMAGE_NAME}:${TAG}" \
+        --network host \
         .
 
     docker run \
